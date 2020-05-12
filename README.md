@@ -49,3 +49,21 @@ pip install "picamera[array]"
 
 # install open cv
 pip install opencv-contrib-python==4.1.0.25
+
+
+# issues, of course
+We CV2 won't be inported easily and it will cause a bug, if you check the comments on the tutorial, you will find in the comments section someone referring to a link providing a solution, here is the link: https://blog.piwheels.org/how-to-work-out-the-missing-dependencies-for-a-python-package/
+Apparently some libraries need to get updated, I followed this link that provied a solution.
+Here is the list of commands I followed to properly import cv2:
+
+cd /home/pi/.local/lib/python3.7/site-packages/cv2
+ls -l
+ls
+ldd cv2.cpython-35m-arm-linux-gnueabihf.so
+ldd cv2.cpython-37m-arm-linux-gnueabihf.so 
+ldd cv2.cpython-37m-arm-linux-gnueabihf.so | grep "not found"
+sudo apt install apt-file
+sudo apt-file update
+apt-file search libjasper.so.1
+sudo apt install libjasper1
+
